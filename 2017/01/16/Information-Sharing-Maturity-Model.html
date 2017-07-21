@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+    <title>Information Sharing Maturity Model</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Here at the MISP project, we are practical oriented people. We create software (from MISP core to MISP workbench), develop data models (such as taxonomies, w..." />
+		<meta name="keywords" content="MISP, CTI, malware, threat, cyber, intelligence, information exchange, sharing, open source, MISP threat sharing, Malware Information Sharing Platform, Threat Intelligence Platform, TIP, information sharing, threatintel" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/ico/favicon-144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/ico/favicon-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/ico/favicon-72.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/images/ico/favicon-57.png">
+    <link rel="shortcut icon" href="/assets/images/ico/favicon.png">
+    <link rel="profile" href="http://osprotocol.com" />
+    <meta property="os:repo" content="https://github.com/MISP/misp-website" />
+    <meta property="os:rcs_type" content="git" />
+    <meta property="os:src" content="git@github.com:MISP/misp-website.git" />
+    <meta property="os:issue" content="https://github.com/MISP/misp-website/issues" />
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.dropotron.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="/assets/js/main.js"></script>
+    <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+    <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+   </head>
+	<body>
+
+		<!-- Header -->
+			<div id="header">
+				<!-- Logo -->
+                <h1><em><a href="/index.html" id="MISP"><img src="/assets/images/misp-small.png" /></em></a></h1>
+                <h1> MISP - Open Source Threat Intelligence Platform &<br /> Open Standards For Threat Information Sharing</h1>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							
+							<li ><a href="/index.html">Home</a></li>
+							<li ><a href="/features.html">Features</a></li>
+							<li ><a href="/news">News</a></li>
+							<li ><a href="/download">Download</a></li>
+                            <li>
+                            <a href="/datamodels">Data models</a>
+                                <ul>
+                                        <li><a href="/datamodels#misp-core-format">MISP core format</a></li>
+                                        <li><a href="/datamodels#misp-taxonomies">MISP taxonomies</a></li>
+                                        <li><a href="/datamodels#misp-galaxy">MISP galaxy</a></li>
+                                </ul>
+                            </li>
+                            <li ><a href="/documentation">Documentation</a></li>
+                            <li ><a href="/tools">Tools</a></li>
+                            <li ><a href="/who">Who</a></li>
+                            <li ><a href="/communities">Communities</a></li>
+
+						</ul>
+					</nav>
+
+			</div>
+
+<!-- Main -->
+	<section class="wrapper style1">
+		<div class="container">
+
+			<!-- Blog -->
+				<section>
+					<header class="major">
+						<h2>Information Sharing Maturity Model</h2>
+						<p>Posted 16 Jan 2017</p>
+					</header>
+					<div class="row">
+						<div class="8u -2u">
+							<section class="box">
+								<a href="#" class="image left"><img src="/assets/images/misp-small.png" alt="" /></a>
+								<p>Here at the <em>MISP project</em>, we are practical oriented people. We create software (from <em>MISP core</em> to <em>MISP workbench</em>), develop data models (such as <a href="https://github.com/MISP/misp-taxonomies">taxonomies</a>, <a href="https://github.com/MISP/misp-warninglists">warning-lists</a> and <a href="https://github.com/MISP/misp-galaxy">galaxies</a>) and build practical standards to solve information sharing challenges and improve the general state of information sharing. That’s what we strive for. If we lack something, we build it. If we see a requirement, we fullfil it.</p>
+
+<p>These days, various information sharing communities build their Information Sharing infrastructure on <em>MISP core</em> to support the sharing of cybersecurity indicators, fraud information, incidents or even threat-actor details. We received interesting feedback from organisations wanting to know the maturity of other sharing organisations residing within their sharing community. Understanding the maturity and information sharing capabilities of an organisation can help in order to be able to better serve them by knowing which schemes of contribution they usually use. From an open source software perspective, this model supports us in our pursuit to discover where functionalities are lacking or are under used.</p>
+
+<p>One day we asked ourselves the question whether we could build an automated calculation of maturity using a model that solves the above issue, namely the use of information shared within a sharing community in MISP. We therefore took our favourite tools and designed a simple maturity model based on real information available in a sharing community.</p>
+
+<p>The maturity model is based on 2 different scoring types: <em>C</em> which describes the different types of contributions that an organisation can partake in within the community and <em>EC</em> describing the organisations’ maturity within the scope of external contributions to the MISP project community itself, facilitating an independent score. The different types of contributions are defined further down.</p>
+
+<p>Community maturity level <em>(SUM(C))</em>, which is the score of an organisation based on the contribution within a specific community. This score can be calculated on each instance/community.</p>
+
+<p>The community maturity level of an organisation can remain private to a community or be shared with the community at large, depending on the configuration of the instance.</p>
+
+<p>The global MISP project contribution score <em>(SUM(EC))</em> is the score derived from the MISP project contributions by an organisation. This score is calculated globally by the MISP project.</p>
+
+<h1 id="information-sharing-maturity-level-isml">Information Sharing Maturity Level (ISML)</h1>
+
+<p>The Information Sharing Maturity Level (ISML) is calculated from the sum of values which can be extracted automatically from the MISP instance provisioning access to a sharing community. Each value is independent from one another, meaning that depending on the information sharing practices of an organisation, a maturity level can be calculated with the sum of the defined values. The maturity level can be represented by a simple vector to show the gap of the current practices and capabilities of an organisation (e.g. an organisation only consuming information via the API has a specific capability which can be rated). As previously stated, this information can be kept privately in a specific sharing community or shared globally.</p>
+
+<ul>
+  <li>L1 Have access to a MISP instance accessing a community, have at least one user with an encryption key and receive encrypted notifications. This is the minimal requirement to start calculating the ISML. (A)</li>
+  <li>C1 Contributing via proposals or discussions at least once a year. (A)</li>
+  <li>C2 Actively contributing proposals to recent events. (A)</li>
+  <li>C3 Adding events at least once a year. (A)</li>
+  <li>C4 Adding events at least once a month. (A)</li>
+  <li>C5 Regularly (at least one per week) posting events with adequate classification. (A)</li>
+  <li>C6 Using the API. (A)</li>
+  <li>C7 Complex API usage. (A)</li>
+  <li>C8 Having their own MISP instance. (A)</li>
+  <li>C9 Having own and connected MISP instance. (A)</li>
+  <li>C10 Running their own connected sharing communities.</li>
+  <li>C11 Ensuring best security practices when sharing information (e.g. when TLP:AMBER information is shared, encryption of the notification is enabled).</li>
+</ul>
+
+<p>The aim behind this score is to help organisations contributing <strong>to know where they stand, what they can still do to improve their practices and to fully benefit from information sharing</strong>.</p>
+
+<p>MISP events are composed of one or more attributes which describe the intent of the event package from indicators, vulnerabilities or any other relevant information. The scoring is based on contributed events or the proposals made as described at each level. A value is usually derived from an automatic analysis within the MISP instance (where A is mentioned). Some parameter are still under investigation on how the value is properly derived from an instance (where A is lacking).</p>
+
+<h2 id="global-misp-project-contribution-score">Global MISP Project Contribution Score</h2>
+
+<p>Global MISP project contribution score is independent from the Information Sharing Maturity Level. This score is for calculating the level of contribution to the open source project MISP. It is an additional score to see to which extent an organisation is contributing to the MISP project.</p>
+
+<ul>
+  <li>EC1 Contributing to taxonomies. (A)</li>
+  <li>EC2 Contributing to warning-lists. (A)</li>
+  <li>EC3 Contributing to galaxy. (A)</li>
+  <li>EC4 Contributing to modules. (A)</li>
+  <li>EC5 Contributing to MISP core. (A)</li>
+  <li>EC6 Reporting bugs or issues or ideas. (A)</li>
+</ul>
+
+<p>Contributing stands for at least one pull-request, at least once a year on the corresponding public git repository. Reporting means to open at least one issue per year.</p>
+
+<h1 id="next-steps">Next Steps</h1>
+
+<p>The current maturity model is a first proposal based on the current practices within information sharing communities relying on MISP. <strong>We seek additional feedback to expand the maturity level or make it more accurate</strong>. <a href="https://github.com/MISP/MISP/issues/1848">An issue on GitHub is available</a> where you can provide feedback or updates. In the next few weeks, a first version of the Information Sharing Maturity Level will be implemented in the MISP core. This project is to fit within the overall goal to provide a sharing platform where contributors have incentives to contribute more (aka <strong><em>the gamification project</em></strong>).</p>
+
+							</section>
+						</div>
+					</div>
+				</section>
+
+		</div>
+	</section>
+		<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<div class="row ">
+						<div class="6u">
+							<div class="row collapse-at-2">
+								<section class="6u">
+                                <!-- Icons -->
+                                <h3>Join us!</h3>
+					<ul class="icons">
+                            <li><a href="https://twitter.com/MISPProject" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/MISP" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                        <li><a href="https://gitter.im/MISP" class="icon fa-gitter"><span class="label">Gitter</span></a></li>
+					</ul>
+								</section>
+							</div>
+						</div>
+						<section class="6u">
+							<h3>Get In Touch</h3>
+                            <p>MISP is a community-driven project lead by the community of users.</p>
+                            <p>You can get in touch with the MISP core team at the following email: <a href="mailto:info@misp-project.org">info@misp-project.org</a></p>
+						</section>
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div class="copyright">
+						<ul class="menu">
+							<li>&copy; MISP project. Software released under the AGPL license and content released as CC-BY-SA.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><li> Jekyll Template: <a href="http://cloudcannon.com">Cloud Cannon</a></li>
+						</ul>
+					</div>
+
+			</div>
+
+	</body>
+</html>
+

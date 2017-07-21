@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+    <title>Building an OCR import module in MISP</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Building an Optical Character Recognition module in MISP" />
+		<meta name="keywords" content="MISP, CTI, malware, threat, cyber, intelligence, information exchange, sharing, open source, MISP threat sharing, Malware Information Sharing Platform, Threat Intelligence Platform, TIP, information sharing, threatintel" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/ico/favicon-144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/ico/favicon-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/ico/favicon-72.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/images/ico/favicon-57.png">
+    <link rel="shortcut icon" href="/assets/images/ico/favicon.png">
+    <link rel="profile" href="http://osprotocol.com" />
+    <meta property="os:repo" content="https://github.com/MISP/misp-website" />
+    <meta property="os:rcs_type" content="git" />
+    <meta property="os:src" content="git@github.com:MISP/misp-website.git" />
+    <meta property="os:issue" content="https://github.com/MISP/misp-website/issues" />
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.dropotron.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="/assets/js/main.js"></script>
+    <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+    <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+   </head>
+	<body>
+
+		<!-- Header -->
+			<div id="header">
+				<!-- Logo -->
+                <h1><em><a href="/index.html" id="MISP"><img src="/assets/images/misp-small.png" /></em></a></h1>
+                <h1> MISP - Open Source Threat Intelligence Platform &<br /> Open Standards For Threat Information Sharing</h1>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							
+							<li ><a href="/index.html">Home</a></li>
+							<li ><a href="/features.html">Features</a></li>
+							<li ><a href="/news">News</a></li>
+							<li ><a href="/download">Download</a></li>
+                            <li>
+                            <a href="/datamodels">Data models</a>
+                                <ul>
+                                        <li><a href="/datamodels#misp-core-format">MISP core format</a></li>
+                                        <li><a href="/datamodels#misp-taxonomies">MISP taxonomies</a></li>
+                                        <li><a href="/datamodels#misp-galaxy">MISP galaxy</a></li>
+                                </ul>
+                            </li>
+                            <li ><a href="/documentation">Documentation</a></li>
+                            <li ><a href="/tools">Tools</a></li>
+                            <li ><a href="/who">Who</a></li>
+                            <li ><a href="/communities">Communities</a></li>
+
+						</ul>
+					</nav>
+
+			</div>
+
+<!-- Main -->
+	<section class="wrapper style1">
+		<div class="container">
+
+			<!-- Blog -->
+				<section>
+					<header class="major">
+						<h2>Building an OCR import module in MISP</h2>
+						<p>Posted 12 Aug 2016</p>
+					</header>
+					<div class="row">
+						<div class="8u -2u">
+							<section class="box">
+								<a href="#" class="image left"><img src="/assets/images/misp-small.png" alt="" /></a>
+								<h2 id="building-an-optical-character-recognition-module-in-misp">Building an Optical Character Recognition module in MISP</h2>
+
+<p>When collecting information from different places, analysts need sometime to perform OCR on documents (like report, faxes, images)
+to import and correlate the information in their MISP instance. As MISP 2.4.50 introduced a new modular
+framework for export and import modules, we decided to build a simple OCR service accessible to MISP user on a local instance.
+This shows how easy you can extend MISP with the <a href="https://github.com/MISP/misp-modules/">new modules framework</a>.</p>
+
+<p>The complete code of the OCR MISP module is the following:</p>
+
+<div class="language-python highlighter-rouge">
+  <pre class="highlight"><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="kn">from</span> <span class="nn">pytesseract</span> <span class="kn">import</span> <span class="n">image_to_string</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="n">misperrors</span> <span class="o">=</span> <span class="p">{</span><span class="s">'error'</span><span class="p">:</span> <span class="s">'Error'</span><span class="p">}</span>
+<span class="n">userConfig</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
+
+<span class="n">inputSource</span> <span class="o">=</span> <span class="p">[</span><span class="s">'file'</span><span class="p">]</span>
+
+<span class="n">moduleinfo</span> <span class="o">=</span> <span class="p">{</span><span class="s">'version'</span><span class="p">:</span> <span class="s">'0.1'</span><span class="p">,</span> <span class="s">'author'</span><span class="p">:</span> <span class="s">'Alexandre Dulaunoy'</span><span class="p">,</span>
+              <span class="s">'description'</span><span class="p">:</span> <span class="s">'Optical Character Recognition (OCR) module for MISP'</span><span class="p">,</span>
+              <span class="s">'module-type'</span><span class="p">:</span> <span class="p">[</span><span class="s">'import'</span><span class="p">]}</span>
+
+<span class="n">moduleconfig</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">q</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">{</span><span class="s">'results'</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s">"data"</span><span class="p">])</span>
+    <span class="n">image_file</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">image_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ocrized</span> <span class="o">=</span> <span class="n">image_to_string</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">image_file</span><span class="p">))</span>
+    <span class="n">freetext</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">freetext</span><span class="p">[</span><span class="s">'values'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ocrized</span>
+    <span class="n">freetext</span><span class="p">[</span><span class="s">'types'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">'freetext'</span><span class="p">]</span>
+    <span class="n">r</span><span class="p">[</span><span class="s">'results'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">freetext</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">r</span>
+
+
+<span class="k">def</span> <span class="nf">introspection</span><span class="p">():</span>
+    <span class="n">modulesetup</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">userConfig</span>
+        <span class="n">modulesetup</span><span class="p">[</span><span class="s">'userConfig'</span><span class="p">]</span> <span class="o">=</span> <span class="n">userConfig</span>
+    <span class="k">except</span> <span class="nb">NameError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">inputSource</span>
+        <span class="n">modulesetup</span><span class="p">[</span><span class="s">'inputSource'</span><span class="p">]</span> <span class="o">=</span> <span class="n">inputSource</span>
+    <span class="k">except</span> <span class="nb">NameError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">modulesetup</span>
+
+
+<span class="k">def</span> <span class="nf">version</span><span class="p">():</span>
+    <span class="n">moduleinfo</span><span class="p">[</span><span class="s">'config'</span><span class="p">]</span> <span class="o">=</span> <span class="n">moduleconfig</span>
+    <span class="k">return</span> <span class="n">moduleinfo</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'test.json'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+    <span class="n">handler</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</code></pre>
+</div>
+
+<p>The import module framework is based on the <a href="https://www.circl.lu/assets/files/misp-training/first2016/1-MISP-modules.pdf">same model as the expansion services</a>. So the important part is to define the inputSource that will be supported by your module. In our case, the file type is used as the user will upload image files from the MISP interface. Then the module will take the input encoded Base64 and then can process it (in our case perform the OCR with tesseract). When the data are scanned, the full input is passed back to MISP as freetext. Freetext allows misp to search for potential indicators in a raw text block.</p>
+
+<p>The module is automatically integrated in MISP via the <a href="https://github.com/MISP/misp-modules">misp-modules framework</a>.</p>
+
+<p>An analyst will have access to the following MISP user-interfaces while using the OCR module. The module just work like an expansion module and the user will see all the potential indicators scanned from the document. The OCR module is included as an example in the misp-modules framework and can be directly enabled in the MISP configuration. In order to use the module, the <a href="http://miphol.com/muse/2013/05/install-tesseract-ocr-on-ubunt.html">Tesseract OCR</a> have to be installed locally on your MISP instance.</p>
+
+<p><img src="/assets/images/misp/blog/ocr1.png" alt="MISP user interface listing the modules and showing the ocr module" class="img-responsive" /></p>
+
+<p><img src="/assets/images/misp/blog/ocr2.png" alt="MISP ocr module - scan a file" class="img-responsive" /></p>
+
+<p><img src="/assets/images/misp/blog/ocr3.png" alt="MISP ocr module - import scanned results" class="img-responsive" /></p>
+
+
+							</section>
+						</div>
+					</div>
+				</section>
+
+		</div>
+	</section>
+		<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<div class="row ">
+						<div class="6u">
+							<div class="row collapse-at-2">
+								<section class="6u">
+                                <!-- Icons -->
+                                <h3>Join us!</h3>
+					<ul class="icons">
+                            <li><a href="https://twitter.com/MISPProject" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/MISP" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                        <li><a href="https://gitter.im/MISP" class="icon fa-gitter"><span class="label">Gitter</span></a></li>
+					</ul>
+								</section>
+							</div>
+						</div>
+						<section class="6u">
+							<h3>Get In Touch</h3>
+                            <p>MISP is a community-driven project lead by the community of users.</p>
+                            <p>You can get in touch with the MISP core team at the following email: <a href="mailto:info@misp-project.org">info@misp-project.org</a></p>
+						</section>
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div class="copyright">
+						<ul class="menu">
+							<li>&copy; MISP project. Software released under the AGPL license and content released as CC-BY-SA.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><li> Jekyll Template: <a href="http://cloudcannon.com">Cloud Cannon</a></li>
+						</ul>
+					</div>
+
+			</div>
+
+	</body>
+</html>
+

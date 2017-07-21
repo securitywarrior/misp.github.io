@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-07-21T11:01:57+02:00</updated><id>/</id><title type="html">MISP - a threat information sharing platform</title><subtitle>MISP - a threat information sharing platform</subtitle><entry><title type="html">MISP 2.4.77 released</title><link href="/2017/07/12/MISP.2.4.77.released.html" rel="alternate" type="text/html" title="MISP 2.4.77 released" /><published>2017-07-12T00:00:00+02:00</published><updated>2017-07-12T00:00:00+02:00</updated><id>/2017/07/12/MISP.2.4.77.released</id><content type="html" xml:base="/2017/07/12/MISP.2.4.77.released.html">&lt;p&gt;A new version of MISP &lt;a href=&quot;https://github.com/MISP/MISP/tree/v2.4.77&quot;&gt;2.4.77&lt;/a&gt; has been released including security fixes, bug fixes and various improvements.&lt;/p&gt;
+
+&lt;p&gt;This version includes multiple security fixes reported by cert.govt.nz including:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Some security settings including GnuPG/SMIME passwords for the signing keys used for notifications in MISP and the redis password are now redacted from the server settings accessible via the UI.&lt;/li&gt;
+  &lt;li&gt;Sanitisation of template uploader view in regards to file names has been tightened.&lt;/li&gt;
+  &lt;li&gt;Avoid any data leakage through exceptions thrown by the GFI uploader on failed parsing when debug mode is enabled. Replaced by instead giving proper a warnings via flash messages.&lt;/li&gt;
+  &lt;li&gt;Hashing algorithm updated to bcrypt for new users and updated transparently for existing users at the next login.&lt;/li&gt;
+  &lt;li&gt;All profile edit pages now require the user’s or admin’s password to be confirmed to limit the impact on potential session hijacking.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A significant speed improvement on the feed pull has been done for the CSV/freetext import especially for very large feeds. This speed improvement partially carries over to any tasks that add attributes to already large events.&lt;/p&gt;
+
+&lt;p&gt;Screenshots are now included in search results to better support users actively sharing image artefacts using MISP.&lt;/p&gt;
+
+&lt;p&gt;A host of minor and visual improvements were introduced.&lt;/p&gt;
+
+&lt;p&gt;MISP taxonomies, galaxies and PyMISP updated to the latest version. New default feeds (e.g. dataplane.org) have been added.&lt;/p&gt;
+
+&lt;p&gt;The full change log is available &lt;a href=&quot;https://www.misp.software/Changelog.txt&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Don’t hesitate to &lt;a href=&quot;https://github.com/MISP/MISP/issues&quot;&gt;open an issue&lt;/a&gt; if you have any feedback, found a bug or want to propose new features.&lt;/p&gt;
+
+&lt;p&gt;We would like to thank all the contributors and users who reported issues or ideas in order to improve MISP. A special thank for the security report
+from cert.govt.nz, we always appreciate security analysis of MISP. Don’t hesitate to forward any security report (PGP encrypted) to us &lt;a href=&quot;https://www.circl.lu/report/&quot;&gt;via CIRCL&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Don’t forget our &lt;a href=&quot;https://2017.hack.lu/misp-summit/&quot;&gt;MISP summit 0x3&lt;/a&gt; before the &lt;a href=&quot;https://2017.hack.lu/&quot;&gt;hack.lu&lt;/a&gt; 2017 conference which will take place from 14:00 to 18:00, Monday 16 October 2017.&lt;/p&gt;</content><author><name></name></author><summary type="html">A new version of MISP 2.4.77 has been released including security fixes, bug fixes and various improvements.</summary></entry><entry><title type="html">MISP 2.4.76 released</title><link href="/2017/06/21/MISP.2.4.76.released.html" rel="alternate" type="text/html" title="MISP 2.4.76 released" /><published>2017-06-21T00:00:00+02:00</published><updated>2017-06-21T00:00:00+02:00</updated><id>/2017/06/21/MISP.2.4.76.released</id><content type="html" xml:base="/2017/06/21/MISP.2.4.76.released.html">&lt;p&gt;A new version of MISP &lt;a href=&quot;https://github.com/MISP/MISP/tree/v2.4.76&quot;&gt;2.4.76&lt;/a&gt; has been released including bug fixes and a set of performance improvements at the ingestion level.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A significant issue in older MySQL versions was discovered while entering attributes which significantly improve hampered  the import speed&lt;/li&gt;
+  &lt;li&gt;CIDR block caching has been added to boost the advanced correlation performance&lt;/li&gt;
+  &lt;li&gt;Various other improvements to the fetching mechanism have been introduced to speed MISP up&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ZMQ publisher has been improved with:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;invocation is now cleaner&lt;/li&gt;
+  &lt;li&gt;pub-sub redis channel is open once&lt;/li&gt;
+  &lt;li&gt;discussions at event level are available in the pub-sub channel&lt;/li&gt;
+  &lt;li&gt;additional context fields added to the discussion related messages being pushed (org name, user email and so on)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A host of new minor functionalities such as triggering of the fetching of feeds via the API, storing of STIX export errors into a log file, correction of valid port numbers for the attribute validation, etc have been added.&lt;/p&gt;
+
+&lt;p&gt;This release also includes multiple smaller and larger bug-fixes.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/MISP/misp-warninglists&quot;&gt;misp-warninglists&lt;/a&gt; and &lt;a href=&quot;https://github.com/MISP/misp-galaxy&quot;&gt;misp-galaxy&lt;/a&gt; updated to the latest version.&lt;/p&gt;
+
+&lt;p&gt;The full change log is available &lt;a href=&quot;https://www.misp.software/Changelog.txt&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Don’t hesitate to &lt;a href=&quot;https://github.com/MISP/MISP/issues&quot;&gt;open an issue&lt;/a&gt; if you have any feedback, found a bug or want to propose new features.&lt;/p&gt;
+
+&lt;p&gt;We would like to thank all the contributors and users who reported issues or ideas in order to improve MISP.&lt;/p&gt;
+
+&lt;p&gt;There are still some seats left &lt;a href=&quot;https://www.eventbrite.com/e/misp-training-june-edition-tickets-33663081182&quot;&gt;MISP Training - June Edition (29th June)&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">A new version of MISP 2.4.76 has been released including bug fixes and a set of performance improvements at the ingestion level.</summary></entry><entry><title type="html">MISP 2.4.75 released</title><link href="/2017/06/13/MISP.2.4.75.released.html" rel="alternate" type="text/html" title="MISP 2.4.75 released" /><published>2017-06-13T00:00:00+02:00</published><updated>2017-06-13T00:00:00+02:00</updated><id>/2017/06/13/MISP.2.4.75.released</id><content type="html" xml:base="/2017/06/13/MISP.2.4.75.released.html">&lt;p&gt;A new version of MISP &lt;a href=&quot;https://github.com/MISP/MISP/tree/v2.4.75&quot;&gt;2.4.75&lt;/a&gt; has been released including bug fixes and a set of performance improvements.&lt;/p&gt;
+
+&lt;p&gt;In this release the most important improvement is performance tuning to improve the day-to-day life of the users. The performance improvements are most explicitly on:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Pagination on events with a lot of attributes has been significantly improved.&lt;/li&gt;
+  &lt;li&gt;Warning-lists are now stored in the Redis data store which improves the warning-list lookup notably.&lt;/li&gt;
+  &lt;li&gt;Memory usage of the search API has been drastically reduces&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;New features were introduced, such as the mass-delete feature in the user-interface on the event index as well as at the API level where a list of event IDs to be deleted can now be posted to the appropriate API.&lt;/p&gt;
+
+&lt;p&gt;Multiple improvements in the ZMQ publisher script to support Python 3 including a bug fix to avoid the tearing down of the ZMQ socket for each message published.&lt;/p&gt;
+
+&lt;p&gt;Galaxies updated to the latest version including a complete new galaxy for &lt;a href=&quot;https://www.circl.lu/doc/misp-galaxy/index.html#_rat&quot;&gt;RAT (Remote Access Trojan) definitions&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release also includes bug fixes to the STIX exports where some installations using different versions of the Python libraries would be unable to export events in STIX format.&lt;/p&gt;
+
+&lt;p&gt;The full change log is available &lt;a href=&quot;https://www.misp.software/Changelog.txt&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Don’t hesitate to &lt;a href=&quot;https://github.com/MISP/MISP/issues&quot;&gt;open an issue&lt;/a&gt; if you have any feedback, found a bug or want to propose new features.&lt;/p&gt;
+
+&lt;p&gt;We would like to thank all the contributors and users who reported issues or ideas in order to improve MISP.&lt;/p&gt;</content><author><name></name></author><summary type="html">A new version of MISP 2.4.75 has been released including bug fixes and a set of performance improvements.</summary></entry><entry><title type="html">MISP 2.4.74 released</title><link href="/2017/05/30/MISP.2.4.74.released.html" rel="alternate" type="text/html" title="MISP 2.4.74 released" /><published>2017-05-30T00:00:00+02:00</published><updated>2017-05-30T00:00:00+02:00</updated><id>/2017/05/30/MISP.2.4.74.released</id><content type="html" xml:base="/2017/05/30/MISP.2.4.74.released.html">&lt;p&gt;A new version of MISP &lt;a href=&quot;https://github.com/MISP/MISP/tree/v2.4.74&quot;&gt;2.4.74&lt;/a&gt; has been released including new features, improvements and bug fixes.&lt;/p&gt;
+
+&lt;p&gt;The ZeroMQ pub-sub feature has been significantly improved in MISP to allow for a complete flexible notification scheme for a host of actions which
+take place within a MISP instance, such as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Event publishing&lt;/li&gt;
+  &lt;li&gt;Attribute creation and update&lt;/li&gt;
+  &lt;li&gt;Sighting creation&lt;/li&gt;
+  &lt;li&gt;User creation or modification&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.circl.lu/doc/misp/misp-zmq/&quot;&gt;Documentation of the ZeroMQ pub-sub&lt;/a&gt; feature is available in &lt;a href=&quot;https://github.com/MISP/misp-book&quot;&gt;misp-book&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A &lt;a href=&quot;https://github.com/MISP/MISP/blob/2.4/app/files/feed-metadata/defaults.json&quot;&gt;persistent default feed list&lt;/a&gt; has been added including free and open feeds like:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CIRCL&lt;/li&gt;
+  &lt;li&gt;Botvrij.eu&lt;/li&gt;
+  &lt;li&gt;InThreat&lt;/li&gt;
+  &lt;li&gt;Binary Defense Systems&lt;/li&gt;
+  &lt;li&gt;abuse.ch (multiple feeds)&lt;/li&gt;
+  &lt;li&gt;rules.emergingthreats.net&lt;/li&gt;
+  &lt;li&gt;malwaredomainlist&lt;/li&gt;
+  &lt;li&gt;TOR Node List from dan.me.uk&lt;/li&gt;
+  &lt;li&gt;cybercrime-tracker.net&lt;/li&gt;
+  &lt;li&gt;phishtank&lt;/li&gt;
+  &lt;li&gt;dns-bh.sagadc.org&lt;/li&gt;
+  &lt;li&gt;labs.snort.org&lt;/li&gt;
+  &lt;li&gt;longtail.it.marist.edu&lt;/li&gt;
+  &lt;li&gt;pan-unit42&lt;/li&gt;
+  &lt;li&gt;malwaremustdie&lt;/li&gt;
+  &lt;li&gt;booterblacklist.com&lt;/li&gt;
+  &lt;li&gt;openbl.org&lt;/li&gt;
+  &lt;li&gt;home.nuug.no&lt;/li&gt;
+  &lt;li&gt;hosts-file.net&lt;/li&gt;
+  &lt;li&gt;openphish.com&lt;/li&gt;
+  &lt;li&gt;iplists.firehol.org&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;which can be enabled as a feed cache to do automatic correlation within MISP without the need of importing the full data-set.&lt;/p&gt;
+
+&lt;p&gt;Filtering is now available via the tag index (fixing a famous request during one of the MISP training sessions ;-).&lt;/p&gt;
+
+&lt;p&gt;There is also an upcoming MISP training that might be of interest to MISP users, contributors or developers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A &lt;a href=&quot;https://www.eventbrite.com/e/misp-training-june-edition-tickets-33663081182&quot;&gt;MISP training&lt;/a&gt; is foreseen in Luxembourg, the 29th June 2017. &lt;a href=&quot;https://www.eventbrite.com/e/misp-training-june-edition-tickets-33663081182&quot;&gt;Register&lt;/a&gt; as soon as possible if you want to join us.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The full change log is available &lt;a href=&quot;https://www.misp.software/Changelog.txt&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Don’t hesitate to &lt;a href=&quot;https://github.com/MISP/MISP/issues&quot;&gt;open an issue&lt;/a&gt; if you have any feedback, found a bug or want to propose new features.&lt;/p&gt;
+
+&lt;p&gt;We would like to thank all the contributors and especially the participants of the &lt;a href=&quot;https://hackathon.hack.lu/&quot;&gt;hackathon organised&lt;/a&gt; in Luxembourg.&lt;/p&gt;</content><author><name></name></author><summary type="html">A new version of MISP 2.4.74 has been released including new features, improvements and bug fixes.</summary></entry><entry><title type="html">MISP 2.4.73 released</title><link href="/2017/05/09/MISP.2.4.73.released.html" rel="alternate" type="text/html" title="MISP 2.4.73 released" /><published>2017-05-09T00:00:00+02:00</published><updated>2017-05-09T00:00:00+02:00</updated><id>/2017/05/09/MISP.2.4.73.released</id><content type="html" xml:base="/2017/05/09/MISP.2.4.73.released.html">&lt;p&gt;A new version of MISP &lt;a href=&quot;https://github.com/MISP/MISP/tree/v2.4.73&quot;&gt;2.4.73&lt;/a&gt; has been released including new features, improvements and bug fixes.&lt;/p&gt;
+
+&lt;p&gt;A new module type Cortex has been introduced allowing for easy integration of MISP and Cortex. &lt;a href=&quot;https://github.com/CERT-BDF/Cortex&quot;&gt;Cortex&lt;/a&gt; is the analysis engine part of the &lt;a href=&quot;https://thehive-project.org/&quot;&gt;TheHive Project&lt;/a&gt; which supports expansion services from Cortex within MISP. A new setting has been added to support Cortex similarly to MISP expansion modules where you set the remote Cortex instance. MISP includes a new Cortex attribute type to allow for the raw analysis to be stored along with the event for subsequent analysis.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/misp/blog/feed-overlap-analys-matrix.png&quot; alt=&quot;feed overlap analysis matrix&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The MISP feed handling was reworked to expand the functionality and avoid the past limitation:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;feeds can now be fetched and compared with events without being imported as MISP events. This is a significant improvement to allow for fast lookups of feed indicator values against any event. A new column has been introduced in the event view to add a correlation counter linking to the cached feeds.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;As the feed indicators are now cached in Redis, MISP is now offering the capability to compare the similarities between feeds. An overview matrix is available, showing the overall overlap of indicators among the different feeds. The table is
+there to support analysts and aid them in better understanding the different levels of coverage provided by their feed collections.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The feed management and information is only accessible to the MISP site admin by default.
+An option has been added to allow other users of an instance to benefit from the feed correlation data but this needs to be explicitly set by the site admin while creating a new feed. This allows users to benefit from a feed without sharing the configuration details or even the existance of a feed source.&lt;/p&gt;
+
+&lt;p&gt;Multiple updates have been done to the API:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;freeTextImport is now accessible via the API to allow the import from unstructured text similar to the functionality in the user-interface. As there is no&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;JSON based extension formats can now be updated via the API (warninglists, taxonomies, galaxy-clusters)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/MISP/misp-galaxy&quot;&gt;MISP galaxy&lt;/a&gt; and &lt;a href=&quot;https://github.com/MISP/misp-taxonomies&quot;&gt;MISP taxonomies&lt;/a&gt; updated to the latest version, including new threat actors, ransomware and tool definitions.&lt;/p&gt;
+
+&lt;p&gt;There is also an upcoming MISP training that might be of interest to MISP users, contributors or developers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A &lt;a href=&quot;https://www.eventbrite.com/e/misp-training-june-edition-tickets-33663081182&quot;&gt;MISP training&lt;/a&gt; is foreseen in Luxembourg, the 29th June 2017. &lt;a href=&quot;https://www.eventbrite.com/e/misp-training-june-edition-tickets-33663081182&quot;&gt;Register&lt;/a&gt; as soon as possible if you want to join us.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The full change log is available &lt;a href=&quot;https://www.misp.software/Changelog.txt&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Don’t hesitate to &lt;a href=&quot;https://github.com/MISP/MISP/issues&quot;&gt;open an issue&lt;/a&gt; if you have any feedback, found a bug or want to propose new features.&lt;/p&gt;
+
+&lt;p&gt;We would like to thank all the contributors and especially the participants of the &lt;a href=&quot;https://hackathon.hack.lu/&quot;&gt;hackathon organised&lt;/a&gt; in Luxembourg.&lt;/p&gt;</content><author><name></name></author><summary type="html">A new version of MISP 2.4.73 has been released including new features, improvements and bug fixes.</summary></entry><entry><title type="html">MISP 2.4.72 released</title><link href="/2017/04/14/MISP.2.4.72.released.html" rel="alternate" type="text/html" title="MISP 2.4.72 released" /><published>2017-04-14T00:00:00+02:00</published><updated>2017-04-14T00:00:00+02:00</updated><id>/2017/04/14/MISP.2.4.72.released</id><content type="html" xml:base="/2017/04/14/MISP.2.4.72.released.html">&lt;p&gt;A new version of MISP &lt;a href=&quot;https://github.com/MISP/MISP/tree/v2.4.72&quot;&gt;2.4.72&lt;/a&gt; has been released including improvements and important bug fixes.&lt;/p&gt;
+
+&lt;p&gt;Improvements have been introduced to better support large MISP instances:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Added new flag to events/restSearch to disable sharing group loading. The option sgReferenceOnly will only load the sharing_group_id
+not the actual sharing group data. This option helps organisation extensively using sharing groups at attribute level and doesn’t use the
+nifty inherit distribution level.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Minimal flag added to the event index used by the sync, greatly reduces the data fetched / transfered on the initial sync negotiation.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Various bug fixes and small improvements such as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Enforce the hide tag directive. Allow to hide tag at instance level by the MISP site admin and remove it from the tag selection from each user. The tag is not lost but just hidden from the user-interface.&lt;/li&gt;
+  &lt;li&gt;Toggling correlation at attribute level is now completely sane from a user perspective and allow the analyst to safely contact the mother ship while encoding the latest information known from Nation State Actor (There is almost no chance that this MISP release was coordinated with Shadow Brokers estimative-language:likelihood-probability=”almost-no-chance”).&lt;/li&gt;
+  &lt;li&gt;A bug in the organisation blacklisting was fixed.&lt;/li&gt;
+  &lt;li&gt;Fixed an issue where a proposal not having an assigned organisation broke the synchronisation on a pull.&lt;/li&gt;
+  &lt;li&gt;Multiple fixes and cleanup in the client side JavaScript.&lt;/li&gt;
+  &lt;li&gt;Other minor fixes &lt;a href=&quot;https://github.com/MISP/MISP/issues&quot;&gt;kindly reported by our users&lt;/a&gt; via GitHub.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/MISP/misp-galaxy&quot;&gt;MISP galaxy&lt;/a&gt; updated to the latest version, including new threat actors, exploit-kits and tool definitions.&lt;/p&gt;
+
+&lt;p&gt;There are also two agenda notifications that might be of interest to any MISP users, contributors or developers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A &lt;a href=&quot;https://www.eventbrite.com/e/misp-training-june-edition-tickets-33663081182&quot;&gt;MISP training&lt;/a&gt; is foreseen in Luxembourg, the 29th June 2017. &lt;a href=&quot;https://www.eventbrite.com/e/misp-training-june-edition-tickets-33663081182&quot;&gt;Register&lt;/a&gt; as soon as possible if you want to join us.&lt;/li&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://hackathon.hack.lu/&quot;&gt;Open Source Security Software Hackathon&lt;/a&gt; is a 2-days open hackathon to bring people and open source security software/tools together. It will take place 2-3 May 2017 in Luxembourg. The MISP core team will be there and if you want to join us to contribute feedback, ideas, code, documentation or anything that could improve information sharing and MISP.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The full change log is available &lt;a href=&quot;https://www.misp.software/Changelog.txt&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Don’t hesitate to &lt;a href=&quot;https://github.com/MISP/MISP/issues&quot;&gt;open an issue&lt;/a&gt; if you have any feedback, found a bug or want to propose new features.&lt;/p&gt;</content><author><name></name></author><summary type="html">A new version of MISP 2.4.72 has been released including improvements and important bug fixes.</summary></entry><entry><title type="html">MISP 2.4.71 released</title><link href="/2017/04/11/MISP.2.4.71.released.html" rel="alternate" type="text/html" title="MISP 2.4.71 released" /><published>2017-04-11T00:00:00+02:00</published><updated>2017-04-11T00:00:00+02:00</updated><id>/2017/04/11/MISP.2.4.71.released</id><content type="html" xml:base="/2017/04/11/MISP.2.4.71.released.html">&lt;p&gt;A new version of MISP &lt;a href=&quot;https://github.com/MISP/MISP/tree/v2.4.71&quot;&gt;2.4.71&lt;/a&gt; has been released including new features, improvements and important bug fixes.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Distribution can now be set in the free-text and modules import.&lt;/li&gt;
+  &lt;li&gt;Password complexity default tightened to allow passphrase-like in addition to password.&lt;/li&gt;
+  &lt;li&gt;Password regexp (can be considered a CTF-challenge for some users) is now available as a hint.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;API&lt;/strong&gt; restsearch has been significantly improved allowing to support alternate download types from the restsearch (currently OpenIOC is supported). OpenIOC export and CIDR tool refactored.&lt;/li&gt;
+  &lt;li&gt;Organisation blacklist is now enabled by default and &lt;a href=&quot;https://www.circl.lu/doc/misp/book-convention/&quot;&gt;sample UUIDs/organisations&lt;/a&gt; are now blacklisted by default.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;API&lt;/strong&gt; The “proposal to delete flag” is now available in the API output.&lt;/li&gt;
+  &lt;li&gt;Improved error handling when failing to add a tag.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;API&lt;/strong&gt; Event history is now available via the API.&lt;/li&gt;
+  &lt;li&gt;Set comment field to an empty string in the attributes pre-validation (to avoid null comment field).&lt;/li&gt;
+  &lt;li&gt;Correlation can now be disabled for site admin even if (s)he is not the owner.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Various bugs fixed in the sharing group synchronisation and delegation. Improvements to the UI popups when using low-resolution (aka potato displays).&lt;/p&gt;
+
+&lt;p&gt;At the same time, a new version (2.4.71) of &lt;a href=&quot;https://github.com/MISP/PyMISP&quot;&gt;PyMISP&lt;/a&gt; has been released including multiple bug fixes.&lt;/p&gt;
+
+&lt;p&gt;Internet-Draft for &lt;a href=&quot;https://tools.ietf.org/html/draft-dulaunoy-misp-core-format-01&quot;&gt;MISP core format&lt;/a&gt; and &lt;a href=&quot;https://tools.ietf.org/html/draft-dulaunoy-misp-taxonomy-format-02&quot;&gt;taxonomy&lt;/a&gt; updated to the latest version along with the respective JSON schema used for validation.&lt;/p&gt;
+
+&lt;p&gt;The full change log is available &lt;a href=&quot;https://www.misp.software/Changelog.txt&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Don’t hesitate to &lt;a href=&quot;https://github.com/MISP/MISP/issues&quot;&gt;open an issue&lt;/a&gt; if you have any feedback, found a bug or want to propose new features.&lt;/p&gt;</content><author><name></name></author><summary type="html">A new version of MISP 2.4.71 has been released including new features, improvements and important bug fixes.</summary></entry><entry><title type="html">MISP 2.4.70 released</title><link href="/2017/03/26/MISP.2.4.70.released.html" rel="alternate" type="text/html" title="MISP 2.4.70 released" /><published>2017-03-26T00:00:00+01:00</published><updated>2017-03-26T00:00:00+01:00</updated><id>/2017/03/26/MISP.2.4.70.released</id><content type="html" xml:base="/2017/03/26/MISP.2.4.70.released.html">&lt;p&gt;A new version of MISP &lt;a href=&quot;https://github.com/MISP/MISP/tree/v2.4.70&quot;&gt;2.4.70&lt;/a&gt; has been released including new features, improvements and important bug fixes.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A significant improvement has been introduced to the MISP user-interface to make it &lt;a href=&quot;https://github.com/MISP/MISP/issues/2038&quot;&gt;more accessible&lt;/a&gt; especially for visually impaired users.&lt;/li&gt;
+  &lt;li&gt;API improvements introduced to allow adding several attributes in one go.&lt;/li&gt;
+  &lt;li&gt;API extended to support the functionality of adding and editing MISP servers.&lt;/li&gt;
+  &lt;li&gt;A simple update feature from the user-interface was introduced to ease the update process of MISP.&lt;/li&gt;
+  &lt;li&gt;New attribute types (hex, sigma and impfuzzy) have been introduced for new misp-objects and to improve the support of the new &lt;a href=&quot;https://github.com/Neo23x0/sigma&quot;&gt;sigma format&lt;/a&gt;. Sigma is a generic signature format for SIEM Systems. This new attribute type will help the development of a sigma converter via misp-modules.&lt;/li&gt;
+  &lt;li&gt;Test and diagnostic for the MISP server synchronisation has been significantly improved. The old legacy and mangle sync for very old MISP instances (2.3x) has been removed in an effort to make the code cleaner and improve the synchronisation process with recent MISP instances.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Many other bugs fixed and minor features added.&lt;/p&gt;
+
+&lt;p&gt;The full change log is available &lt;a href=&quot;https://www.misp.software/Changelog.txt&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Don’t hesitate to &lt;a href=&quot;https://github.com/MISP/MISP/issues&quot;&gt;open an issue&lt;/a&gt; if you have any feedback, found a bug or want to propose new features.&lt;/p&gt;</content><author><name></name></author><summary type="html">A new version of MISP 2.4.70 has been released including new features, improvements and important bug fixes.</summary></entry><entry><title type="html">MISP 2.4.69 released</title><link href="/2017/03/10/MISP.2.4.69.released.html" rel="alternate" type="text/html" title="MISP 2.4.69 released" /><published>2017-03-10T00:00:00+01:00</published><updated>2017-03-10T00:00:00+01:00</updated><id>/2017/03/10/MISP.2.4.69.released</id><content type="html" xml:base="/2017/03/10/MISP.2.4.69.released.html">&lt;p&gt;A new version of MISP &lt;a href=&quot;https://github.com/MISP/MISP/tree/v2.4.69&quot;&gt;2.4.69&lt;/a&gt; has been released including multiple security bug fixes and minor improvements.&lt;/p&gt;
+
+&lt;p&gt;Improvements added:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;User creation now shows a warning if the encrypted notification cannot be send due to encryption issue.&lt;/li&gt;
+  &lt;li&gt;Tagged properly added to Suricata rules.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Two security vulnerabilities (XSS) reported by Tien Phan and David Maciejak of Fortinet’s FortiGuard Labs were fixed. Thanks to them for reporting the vulnerabilities.&lt;/p&gt;
+
+&lt;p&gt;The full change log is available &lt;a href=&quot;https://www.misp.software/Changelog.txt&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Don’t hesitate to &lt;a href=&quot;https://github.com/MISP/MISP/issues&quot;&gt;open an issue&lt;/a&gt; if you have any feedback, found a bug or want to propose new features.&lt;/p&gt;</content><author><name></name></author><summary type="html">A new version of MISP 2.4.69 has been released including multiple security bug fixes and minor improvements.</summary></entry><entry><title type="html">MISP 2.4.68 released</title><link href="/2017/03/08/MISP.2.4.68.released.html" rel="alternate" type="text/html" title="MISP 2.4.68 released" /><published>2017-03-08T00:00:00+01:00</published><updated>2017-03-08T00:00:00+01:00</updated><id>/2017/03/08/MISP.2.4.68.released</id><content type="html" xml:base="/2017/03/08/MISP.2.4.68.released.html">&lt;p&gt;A new version of MISP &lt;a href=&quot;https://github.com/MISP/MISP/tree/v2.4.68&quot;&gt;2.4.68&lt;/a&gt; has been released including multiple bug fixes and improvements.&lt;/p&gt;
+
+&lt;p&gt;Improvements and features added:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Enable sync permissions for read-only accounts.&lt;/li&gt;
+  &lt;li&gt;Upload org logo can now be performed via the org edit/view interface.&lt;/li&gt;
+  &lt;li&gt;An option to disable cached export has been added for low disk space servers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Blacklisting of deleted events is now enabled by default. This feature existed before but was not enabled by default. This feature allows MISP users to
+ensure that deleted events never propagate back to their instance. The blacklist can easily be managed from the MISP interface. As this
+feature is a default behaviour that a large majority of the MISP community needs, we have decided to enable this feature by default starting from version 2.4.68.&lt;/p&gt;
+
+&lt;p&gt;Many bugs were fixed in this release, including a specific speed improvement in the event deletion process.&lt;/p&gt;
+
+&lt;p&gt;For the ongoing work on &lt;a href=&quot;https://github.com/MISP/misp-objects&quot;&gt;misp-objects&lt;/a&gt;, a new float type has been added to support additional composite objects.
+We welcome contributions to the misp-objects’ design and any ideas helping us to ensure that a consistent set of objects are ready for the next release.&lt;/p&gt;
+
+&lt;p&gt;The full change log is available &lt;a href=&quot;https://www.misp.software/Changelog.txt&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Don’t hesitate to &lt;a href=&quot;https://github.com/MISP/MISP/issues&quot;&gt;open an issue&lt;/a&gt; if you have any feedback, found a bug or want to propose new features.&lt;/p&gt;</content><author><name></name></author><summary type="html">A new version of MISP 2.4.68 has been released including multiple bug fixes and improvements.</summary></entry></feed>

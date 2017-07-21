@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+    <title>MISP 2.4.52 released including new features and major improvements</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="We are glad to announce MISP 2.4.52 including new features, improvements and bug fixes." />
+		<meta name="keywords" content="MISP, CTI, malware, threat, cyber, intelligence, information exchange, sharing, open source, MISP threat sharing, Malware Information Sharing Platform, Threat Intelligence Platform, TIP, information sharing, threatintel" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/ico/favicon-144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/ico/favicon-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/ico/favicon-72.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/images/ico/favicon-57.png">
+    <link rel="shortcut icon" href="/assets/images/ico/favicon.png">
+    <link rel="profile" href="http://osprotocol.com" />
+    <meta property="os:repo" content="https://github.com/MISP/misp-website" />
+    <meta property="os:rcs_type" content="git" />
+    <meta property="os:src" content="git@github.com:MISP/misp-website.git" />
+    <meta property="os:issue" content="https://github.com/MISP/misp-website/issues" />
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.dropotron.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="/assets/js/main.js"></script>
+    <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+    <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+   </head>
+	<body>
+
+		<!-- Header -->
+			<div id="header">
+				<!-- Logo -->
+                <h1><em><a href="/index.html" id="MISP"><img src="/assets/images/misp-small.png" /></em></a></h1>
+                <h1> MISP - Open Source Threat Intelligence Platform &<br /> Open Standards For Threat Information Sharing</h1>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							
+							<li ><a href="/index.html">Home</a></li>
+							<li ><a href="/features.html">Features</a></li>
+							<li ><a href="/news">News</a></li>
+							<li ><a href="/download">Download</a></li>
+                            <li>
+                            <a href="/datamodels">Data models</a>
+                                <ul>
+                                        <li><a href="/datamodels#misp-core-format">MISP core format</a></li>
+                                        <li><a href="/datamodels#misp-taxonomies">MISP taxonomies</a></li>
+                                        <li><a href="/datamodels#misp-galaxy">MISP galaxy</a></li>
+                                </ul>
+                            </li>
+                            <li ><a href="/documentation">Documentation</a></li>
+                            <li ><a href="/tools">Tools</a></li>
+                            <li ><a href="/who">Who</a></li>
+                            <li ><a href="/communities">Communities</a></li>
+
+						</ul>
+					</nav>
+
+			</div>
+
+<!-- Main -->
+	<section class="wrapper style1">
+		<div class="container">
+
+			<!-- Blog -->
+				<section>
+					<header class="major">
+						<h2>MISP 2.4.52 released including new features and major improvements</h2>
+						<p>Posted 07 Oct 2016</p>
+					</header>
+					<div class="row">
+						<div class="8u -2u">
+							<section class="box">
+								<a href="#" class="image left"><img src="/assets/images/misp-small.png" alt="" /></a>
+								<p>We are glad to announce MISP 2.4.52 including new features, improvements and bug fixes.</p>
+
+<p>The following new features were introduced:</p>
+
+<ul>
+  <li>Freetext feed import: a flexible scheme to import any feed available on Internet and incorporate them automatically in MISP. The feed imported can create new event or update an existing event. The freetext feed feature permits to preview the import and quickly integrates external sources.</li>
+</ul>
+
+<p><img src="/assets/images/misp/freetext-feed.png" alt="External feed in MISP - an example of external feed configured" class="img-responsive" /></p>
+
+<ul>
+  <li>
+    <p><a href="https://www.bro.org/">Bro NIDS</a> export added in MISP in addition to Snort and Suricata.</p>
+  </li>
+  <li>
+    <p>A default role can be set allowing flexible role policy.</p>
+  </li>
+  <li>
+    <p>Functionality to allow merging of attributes from a different event.</p>
+  </li>
+  <li>
+    <p>Many updates and improvement in the MISP user-interface including filtering of proposals at index level.</p>
+  </li>
+</ul>
+
+<p>Bug fixes and improvements:</p>
+
+<ul>
+  <li>XML STIX export has been significantly improved to ensure enhanced compatibility with other platforms.</li>
+  <li>Bruteforce protection has been fixed.</li>
+  <li>OpenIOC export via the API is now possible.</li>
+  <li>Various bugs at the API level were fixed.</li>
+</ul>
+
+<p><a href="https://github.com/MISP/misp-taxonomies">MISP taxonomies</a> and <a href="https://github.com/MISP/misp-warninglists">warning-lists</a> have been updated to the latest version.</p>
+
+<p>For more information about the updates, check the <a href="/Changelog.txt">changelog</a>.</p>
+
+<p>We thank all the contributors, bug finders, testers and users of the MISP platform.</p>
+
+							</section>
+						</div>
+					</div>
+				</section>
+
+		</div>
+	</section>
+		<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<div class="row ">
+						<div class="6u">
+							<div class="row collapse-at-2">
+								<section class="6u">
+                                <!-- Icons -->
+                                <h3>Join us!</h3>
+					<ul class="icons">
+                            <li><a href="https://twitter.com/MISPProject" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/MISP" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                        <li><a href="https://gitter.im/MISP" class="icon fa-gitter"><span class="label">Gitter</span></a></li>
+					</ul>
+								</section>
+							</div>
+						</div>
+						<section class="6u">
+							<h3>Get In Touch</h3>
+                            <p>MISP is a community-driven project lead by the community of users.</p>
+                            <p>You can get in touch with the MISP core team at the following email: <a href="mailto:info@misp-project.org">info@misp-project.org</a></p>
+						</section>
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div class="copyright">
+						<ul class="menu">
+							<li>&copy; MISP project. Software released under the AGPL license and content released as CC-BY-SA.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><li> Jekyll Template: <a href="http://cloudcannon.com">Cloud Cannon</a></li>
+						</ul>
+					</div>
+
+			</div>
+
+	</body>
+</html>
+

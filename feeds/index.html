@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+    <title>MISP Default Feeds</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="MISP - a threat information sharing platform" />
+		<meta name="keywords" content="MISP, CTI, malware, threat, cyber, intelligence, information exchange, sharing, open source, MISP threat sharing, Malware Information Sharing Platform, Threat Intelligence Platform, TIP, information sharing, threatintel" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/ico/favicon-144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/ico/favicon-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/ico/favicon-72.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/images/ico/favicon-57.png">
+    <link rel="shortcut icon" href="/assets/images/ico/favicon.png">
+    <link rel="profile" href="http://osprotocol.com" />
+    <meta property="os:repo" content="https://github.com/MISP/misp-website" />
+    <meta property="os:rcs_type" content="git" />
+    <meta property="os:src" content="git@github.com:MISP/misp-website.git" />
+    <meta property="os:issue" content="https://github.com/MISP/misp-website/issues" />
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.dropotron.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="/assets/js/main.js"></script>
+    <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+    <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+   </head>
+	<body>
+
+		<!-- Header -->
+			<div id="header">
+				<!-- Logo -->
+                <h1><em><a href="/index.html" id="MISP"><img src="/assets/images/misp-small.png" /></em></a></h1>
+                <h1> MISP - Open Source Threat Intelligence Platform &<br /> Open Standards For Threat Information Sharing</h1>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							
+							<li ><a href="/index.html">Home</a></li>
+							<li ><a href="/features.html">Features</a></li>
+							<li ><a href="/news">News</a></li>
+							<li ><a href="/download">Download</a></li>
+                            <li>
+                            <a href="/datamodels">Data models</a>
+                                <ul>
+                                        <li><a href="/datamodels#misp-core-format">MISP core format</a></li>
+                                        <li><a href="/datamodels#misp-taxonomies">MISP taxonomies</a></li>
+                                        <li><a href="/datamodels#misp-galaxy">MISP galaxy</a></li>
+                                </ul>
+                            </li>
+                            <li ><a href="/documentation">Documentation</a></li>
+                            <li ><a href="/tools">Tools</a></li>
+                            <li ><a href="/who">Who</a></li>
+                            <li ><a href="/communities">Communities</a></li>
+
+						</ul>
+					</nav>
+
+			</div>
+
+<section class="wrapper style1">
+                <div class="container">
+                        <div id="content">
+                        <div class="row double">
+                        <div class="8u">
+                        <article>
+	                    <p>MISP includes a set of public OSINT feeds in its default configuration. The feeds can
+be used as a source of correlations for all of your events and attributes without the need to
+import them directly into your system. The MISP feed system allows for fast correlation but also
+a for quick comparisons of the feeds against one another.</p>
+
+<p>The feeds can be in three different formats:</p>
+
+<ul>
+  <li><a href="https://github.com/MISP/misp-rfc/blob/master/misp-core-format/raw.md.txt">MISP standardized format</a> which is the preferred format to benefit from all the MISP functionalities.</li>
+  <li>CSV format, allowing you to pick the columns that are to be imported.</li>
+  <li>freetext format which allows automatic ingestion and detection of indicator/attribute by parsing any unstructured text.</li>
+</ul>
+
+<p>and located in different input transports:</p>
+
+<ul>
+  <li>Network (URL)</li>
+  <li>Local (file)</li>
+</ul>
+
+<h2 id="default-feeds-available-in-misp">Default feeds available in MISP</h2>
+
+<p>The default feeds are described in a <a href="https://github.com/MISP/MISP/blob/2.4/app/files/feed-metadata/defaults.json">simple JSON format</a>. The default feeds and the current version of MISP are the following:</p>
+
+<ul>
+  <li><a href="https://www.circl.lu/doc/misp/feed-osint">CIRCL OSINT Feed</a> - CIRCL - feed format: <code class="highlighter-rouge">misp</code></li>
+  <li><a href="http://www.botvrij.eu/data/feed-osint">The Botvrij.eu Data</a> - Botvrij.eu - feed format: <code class="highlighter-rouge">misp</code></li>
+  <li><a href="https://feeds.inthreat.com/osint/misp/">inThreat OSINT Feed</a> - inThreat - feed format: <code class="highlighter-rouge">misp</code></li>
+  <li><a href="https://zeustracker.abuse.ch/blocklist.php?download=ipblocklist">ZeuS IP blocklist (Standard)</a> - zeustracker.abuse.ch - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://zeustracker.abuse.ch/blocklist.php?download=compromised">ZeuS compromised URL blocklist</a> - zeustracker.abuse.ch - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="http://rules.emergingthreats.net/blockrules/compromised-ips.txt">blockrules of rules.emergingthreats.net</a> - rules.emergingthreats.net - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://www.trustedsec.com/banlist.txt">Binary Defense Systems Artillery Threat Intelligence Feed and Banlist Feed</a> - Binary Defense Systems - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://panwdbl.appspot.com/lists/mdl.txt">malwaredomainlist</a> - malwaredomainlist - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://www.dan.me.uk/torlist/?exit">Tor exit nodes</a> - TOR Node List from dan.me.uk - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://www.dan.me.uk/torlist/">Tor ALL nodes</a> - TOR Node List from dan.me.uk - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="http://cybercrime-tracker.net/all.php">cybercrime-tracker.net - all</a> - cybercrime-tracker.net - feed format: <code class="highlighter-rouge">freetext</code></li>
+  <li><a href="http://data.phishtank.com/data/online-valid.csv">Phishtank online valid phishing</a> - Phishtank - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="http://dns-bh.sagadc.org/dynamic_dns.txt">listdynamic dns providers</a> - http://dns-bh.sagadc.org - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="http://labs.snort.org/feeds/ip-filter.blf">ip-filter.blf - labs.snort.org</a> - http://labs.snort.org - feed format: <code class="highlighter-rouge">freetext</code></li>
+  <li><a href="http://longtail.it.marist.edu/honey/current-ip-addresses.txt">longtail.it.marist.edu</a> - longtail.it.marist.edu - feed format: <code class="highlighter-rouge">freetext</code></li>
+  <li><a href="http://longtail.it.marist.edu/honey/last-7-days-ip-addresses.txt">longtail.it.marist.edu 7 days</a> - longtail.it.marist.edu - feed format: <code class="highlighter-rouge">freetext</code></li>
+  <li><a href="https://raw.githubusercontent.com/pan-unit42/iocs/master/diamondfox/diamondfox_panels.txt">diamondfox_panels</a> - pan-unit42 - feed format: <code class="highlighter-rouge">freetext</code></li>
+  <li><a href="http://booterblacklist.com/data/booterlist_latest.txt">booterblacklist.com Latest</a> - booterblacklist.com - feed format: <code class="highlighter-rouge">freetext</code></li>
+  <li><a href="http://www.openbl.org/lists/base.txt">openbl.org base</a> - openbl.org - feed format: <code class="highlighter-rouge">freetext</code></li>
+  <li><a href="https://home.nuug.no/~peter/pop3gropers.txt">pop3gropers</a> - home.nuug.no - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://ransomwaretracker.abuse.ch/feeds/csv/">Ransomware Tracker CSV Feed</a> - Ransomware Tracker abuse.ch - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://feodotracker.abuse.ch/blocklist/?download=ipblocklist">Feodo IP Blocklist</a> - abuse.ch - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://hosts-file.net/psh.txt">hosts-file.net - hphost - malwarebytes</a> - hosts-file.net - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://hosts-file.net/emd.txt">hosts-file.net - hphost - malwarebytes - EMD classification ONLY</a> - hosts-file.net - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://openphish.com/feed.txt">OpenPhish url list</a> - openphish.com - feed format: <code class="highlighter-rouge">freetext</code></li>
+  <li><a href="https://raw.githubusercontent.com/ktsaou/blocklist-ipsets/master/firehol_level1.netset">firehol_level1</a> - iplists.firehol.org - feed format: <code class="highlighter-rouge">freetext</code></li>
+  <li><a href="http://osint.bambenekconsulting.com/feeds/ramnit-iplist.txt">ramnit C&amp;Cs</a> - osint.bambenekconsulting.com - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="http://osint.bambenekconsulting.com/feeds/virut-iplist.txt">virut C&amp;Cs</a> - osint.bambenekconsulting.com - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="http://cinsscore.com/list/ci-badguys.txt">ci-badguys.txt</a> - cinsscore.com - feed format: <code class="highlighter-rouge">freetext</code></li>
+  <li><a href="http://reputation.alienvault.com/reputation.generic">alienvault reputation generic</a> - .alienvault.com - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://lists.blocklist.de/lists/all.txt">blocklist.de/lists/all.txt</a> - blocklist.de - feed format: <code class="highlighter-rouge">freetext</code></li>
+  <li><a href="https://dataplane.org/vncrfb.txt">VNC RFB</a> - dataplane.org - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://dataplane.org/sshpwauth.txt">sshpwauth.txt</a> - dataplane.org - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://dataplane.org/sipregistration.txt">sipregistration</a> - dataplane.org - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://dataplane.org/sipquery.txt">sipquery</a> - dataplane.org - feed format: <code class="highlighter-rouge">csv</code></li>
+  <li><a href="https://dataplane.org/sipinvitation.txt">sipinvitation</a> - dataplane.org - feed format: <code class="highlighter-rouge">csv</code></li>
+</ul>
+
+<p>To enable a feed for caching, you just need to check the enabled field to benefit automatically of the feeds in your local MISP instance. To allow other users of your MISP instance to benefit from this functionality, simply check the “lookup visible” checkbox.</p>
+
+<h2 id="feed-overlap-analysis-matrix">Feed overlap analysis matrix</h2>
+
+<p><img src="/assets/images/misp/blog/feed-overlap-analys-matrix.png" alt="feed overlap analysis matrix" class="img-responsive" /></p>
+
+<h2 id="how-to-have-my-feed-published-in-the-default-misp-osint-feed">How to have my feed published in the default MISP OSINT feed</h2>
+
+<ul>
+  <li>Fork the <a href="https://github.com/MISP/MISP">MISP project</a> on GitHub.</li>
+  <li>Update the <a href="https://github.com/MISP/MISP/blob/2.4/app/files/feed-metadata/defaults.json">default MISP feed</a> to add your feed(s).</li>
+  <li>Make a pull-request with the updated JSON file.</li>
+</ul>
+
+
+                        </article>
+                        </div>
+                        <div class="4u" id="toc">
+                        <h3> Table of Content </h3>
+                        <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#default-feeds-available-in-misp">Default feeds available in MISP</a></li>
+<li class="toc-entry toc-h2"><a href="#feed-overlap-analysis-matrix">Feed overlap analysis matrix</a></li>
+<li class="toc-entry toc-h2"><a href="#how-to-have-my-feed-published-in-the-default-misp-osint-feed">How to have my feed published in the default MISP OSINT feed</a></li>
+</ul>
+                        </div>
+                        </div>
+                </div>
+
+</div>
+</section>
+
+
+		<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<div class="row ">
+						<div class="6u">
+							<div class="row collapse-at-2">
+								<section class="6u">
+                                <!-- Icons -->
+                                <h3>Join us!</h3>
+					<ul class="icons">
+                            <li><a href="https://twitter.com/MISPProject" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/MISP" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                        <li><a href="https://gitter.im/MISP" class="icon fa-gitter"><span class="label">Gitter</span></a></li>
+					</ul>
+								</section>
+							</div>
+						</div>
+						<section class="6u">
+							<h3>Get In Touch</h3>
+                            <p>MISP is a community-driven project lead by the community of users.</p>
+                            <p>You can get in touch with the MISP core team at the following email: <a href="mailto:info@misp-project.org">info@misp-project.org</a></p>
+						</section>
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div class="copyright">
+						<ul class="menu">
+							<li>&copy; MISP project. Software released under the AGPL license and content released as CC-BY-SA.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><li> Jekyll Template: <a href="http://cloudcannon.com">Cloud Cannon</a></li>
+						</ul>
+					</div>
+
+			</div>
+
+	</body>
+</html>
+

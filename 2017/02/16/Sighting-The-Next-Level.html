@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+    <title>Sighting the next level</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Sighting is an endless topic of discussion. This is a required feature especially when information or indicators are regularly shared to gather feedback from..." />
+		<meta name="keywords" content="MISP, CTI, malware, threat, cyber, intelligence, information exchange, sharing, open source, MISP threat sharing, Malware Information Sharing Platform, Threat Intelligence Platform, TIP, information sharing, threatintel" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/ico/favicon-144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/ico/favicon-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/ico/favicon-72.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/images/ico/favicon-57.png">
+    <link rel="shortcut icon" href="/assets/images/ico/favicon.png">
+    <link rel="profile" href="http://osprotocol.com" />
+    <meta property="os:repo" content="https://github.com/MISP/misp-website" />
+    <meta property="os:rcs_type" content="git" />
+    <meta property="os:src" content="git@github.com:MISP/misp-website.git" />
+    <meta property="os:issue" content="https://github.com/MISP/misp-website/issues" />
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.dropotron.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="/assets/js/main.js"></script>
+    <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+    <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+   </head>
+	<body>
+
+		<!-- Header -->
+			<div id="header">
+				<!-- Logo -->
+                <h1><em><a href="/index.html" id="MISP"><img src="/assets/images/misp-small.png" /></em></a></h1>
+                <h1> MISP - Open Source Threat Intelligence Platform &<br /> Open Standards For Threat Information Sharing</h1>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							
+							<li ><a href="/index.html">Home</a></li>
+							<li ><a href="/features.html">Features</a></li>
+							<li ><a href="/news">News</a></li>
+							<li ><a href="/download">Download</a></li>
+                            <li>
+                            <a href="/datamodels">Data models</a>
+                                <ul>
+                                        <li><a href="/datamodels#misp-core-format">MISP core format</a></li>
+                                        <li><a href="/datamodels#misp-taxonomies">MISP taxonomies</a></li>
+                                        <li><a href="/datamodels#misp-galaxy">MISP galaxy</a></li>
+                                </ul>
+                            </li>
+                            <li ><a href="/documentation">Documentation</a></li>
+                            <li ><a href="/tools">Tools</a></li>
+                            <li ><a href="/who">Who</a></li>
+                            <li ><a href="/communities">Communities</a></li>
+
+						</ul>
+					</nav>
+
+			</div>
+
+<!-- Main -->
+	<section class="wrapper style1">
+		<div class="container">
+
+			<!-- Blog -->
+				<section>
+					<header class="major">
+						<h2>Sighting the next level</h2>
+						<p>Posted 16 Feb 2017</p>
+					</header>
+					<div class="row">
+						<div class="8u -2u">
+							<section class="box">
+								<a href="#" class="image left"><img src="/assets/images/misp-small.png" alt="" /></a>
+								<p>Sighting is an <a href="https://lists.oasis-open.org/archives/cti-stix/201508/msg00019.html">endless topic of discussion</a>. This is a required feature especially when information or indicators are regularly shared to gather feedback from users said shared data. Adequate sightings can be an incredible source of information in order to describe the life-time of an indicator, its evolution and especially to ensure the understanding of indicators among a group of users using the information to detect, mitigate or block malicious activities in their infrastructures. The potential is endless, potentially being a significant gain for organised communities of infosec professionals sharing information or even serve as a requirement for advanced algorithms ranging from machine learning to reinforcement learning. But to reach such a state of a feedback loop, you first require a functional model of sighting.</p>
+
+<p>In early April 2016, MISP introduced the support of <a href="https://circl.lu/doc/misp/automation/index.html#sightings-api">sighting via the API</a> or the UI. This first step was basically to support the existing description of sighting as described in the STIX standard and allow the support via STIX sighting documents or simplified sightings via MISP JSON attributes. This move in MISP allowed us to test sightings at a large-scale in existing sharing communities such as <a href="https://www.circl.lu/services/misp-malware-information-sharing-platform/">the ones operated by CIRCL</a>. The implementation allowed us to have sightings at different levels (at the attribute level as well as a sighting sum at the event level) whilst also supporting the sightings per organisation or per the MISP instance level. We had engaging discussions about the current limitations of simple counters:</p>
+
+<ul>
+  <li>Positive and negative sightings cannot be interpreted as it’s just a positive counter in the existing standards. Many users asked for a direct feedback regarding their false-positive interpretation of a sighting.</li>
+  <li>An absence of time-to-live reference that could support advanced expiration models of an indicator.</li>
+  <li>Sharing of sightings is also required to support a new model of pseudo-anonymous sharing.</li>
+</ul>
+
+<p>To tackle this, we decided <strong>to remodel and extend the sighting in this new release of MISP</strong>. Now the sighting contains a type (which can be easily extended) to support alternative sets of simple counters. The following types were added:</p>
+
+<ul>
+  <li>Sighting type 0, the default sighting type using the default STIX interpretation of a sighting.</li>
+  <li>Sighting type 1, a <strong>false-positive sighting</strong> which means this sighting has been interpreted as a false-positive by the organisation.</li>
+  <li>Sighting type 2, an <strong>expiration sighting</strong> which defines when the sighted attributes is to be expired.</li>
+</ul>
+
+<p>In addition to the flexible type format, we added a simple source field which combined with the organisation provides a simple way to scope the sighting (e.g. honeypot networks versus backbone routers where the false-positive interpreation can be significantly different).</p>
+
+<h1 id="misp-2466-and-improved-sighting">MISP 2.4.66 and Improved Sighting</h1>
+
+<p>MISP 2.4.66 has been released including the improved sightings feature. As you can see below:</p>
+
+<div class="myvideo">
+  <video style="display:block; width:100%; height:auto;" autoplay="" controls="" loop="loop">
+        <source src="/assets/images/misp/video/sighting.webm" type="video/webm" />
+   </video>
+</div>
+
+<p>In previous version of MISP, sightings used the basic counter model as described above. In addition to the classical model, MISP 2.4.66 now allows to do negative sighting to track the numbers of false-positives generated.  All the sightings are also tracked per organisation with an additional source. The source allows an organisation to track which equipments or infrastructure generated the sighting.</p>
+
+<p>This new feature allows many new use-cases such as feeding MISP from a ticketing system (for example indicating that an indicator is a false-positive), attributes which have to be expired in 4 days or adding sightings from honeypots or network sensors.</p>
+
+<p>The full change log is available <a href="https://www.misp.software/Changelog.txt">here</a>.</p>
+
+<p>Don’t hesitate to <a href="https://github.com/MISP/MISP/issues">open an issue</a> if you have any feedback, found a bug or want to propose new features.</p>
+
+							</section>
+						</div>
+					</div>
+				</section>
+
+		</div>
+	</section>
+		<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<div class="row ">
+						<div class="6u">
+							<div class="row collapse-at-2">
+								<section class="6u">
+                                <!-- Icons -->
+                                <h3>Join us!</h3>
+					<ul class="icons">
+                            <li><a href="https://twitter.com/MISPProject" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/MISP" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                        <li><a href="https://gitter.im/MISP" class="icon fa-gitter"><span class="label">Gitter</span></a></li>
+					</ul>
+								</section>
+							</div>
+						</div>
+						<section class="6u">
+							<h3>Get In Touch</h3>
+                            <p>MISP is a community-driven project lead by the community of users.</p>
+                            <p>You can get in touch with the MISP core team at the following email: <a href="mailto:info@misp-project.org">info@misp-project.org</a></p>
+						</section>
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div class="copyright">
+						<ul class="menu">
+							<li>&copy; MISP project. Software released under the AGPL license and content released as CC-BY-SA.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><li> Jekyll Template: <a href="http://cloudcannon.com">Cloud Cannon</a></li>
+						</ul>
+					</div>
+
+			</div>
+
+	</body>
+</html>
+
